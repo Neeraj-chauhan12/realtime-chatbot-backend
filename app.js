@@ -2,8 +2,10 @@ const express=require('express')
 const app=express();
 const cors=require('cors')
 const dotenv=require('dotenv');
-const path=require('path')
-const mongodbconnect = require('./dbconnect');
+const path=require('path');
+const { mongodbconnection } = require('./mbconnect');
+const userRoute=require('./routes/userRoutes')
+
 
 
 
@@ -24,17 +26,17 @@ app.use(cors({
 
 
 
+//routes
+app.use("/user",userRoute)
 
 
 
 
-
-
+//mongodb connection and port listening
 const PORT=process.env.PORT || 5000
-mongodbconnect().then(()=>{
-    app.listen(PORT,()=>{
+mongodbconnection()    
+app.listen(PORT,()=>{
     console.log(`app is running on ${PORT}`)
 })
 
-})
 
