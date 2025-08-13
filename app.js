@@ -5,6 +5,7 @@ const dotenv=require('dotenv');
 const path=require('path');
 const { mongodbconnection } = require('./mbconnect');
 const userRoute=require('./routes/userRoutes')
+const promptRoute=require('./routes/promptRoute')
 
 
 
@@ -28,6 +29,7 @@ app.use(cors({
 
 //routes
 app.use("/user",userRoute)
+app.use("/chatbot",promptRoute)
 
 
 
