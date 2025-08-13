@@ -1,10 +1,10 @@
 const express=require("express")
-const { sendPrompt } = require("../controllers/promtcontrollers")
+const { sendPromt } = require("../controllers/promptControllers")
 const userMiddleware = require("../middlewares/userMiddleware")
 
 
 const router=express.Router()
 
-router.post("/prompt",sendPrompt)
+router.post("/promt",userMiddleware,sendPromt)
 
 module.exports=router
